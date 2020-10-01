@@ -7,21 +7,29 @@ import { IHistoryMessage } from '../../entities/interfaces/historymessage.interf
 import { ThreadMessage } from '../../entities/entity/threadmessage.entity';
 
 export class ThreadMessageMongoDB implements ThreadMessageRepository {
-    constructor(
-        @InjectModel('ThreadMessage') private readonly threadModel: Model<IThreadMessage>,
-        @InjectModel('HistoryMessage') private readonly historyModel: Model<IHistoryMessage>) { }
+  constructor(
+    @InjectModel('ThreadMessage')
+    private readonly threadModel: Model<IThreadMessage>,
+    @InjectModel('HistoryMessage')
+    private readonly historyModel: Model<IHistoryMessage>,
+  ) {}
 
-    async addThreadToHistoryMessage(threadMessageDto: ThreadMessageDto): Promise<IThreadMessage> {
-        const history = this.historyModel.findOne({ _id: threadMessageDto.historyMsgId });
-        if (history) {
-            const saveThreadMessage = new this.threadModel(threadMessageDto);
-            return await saveThreadMessage.save();
-        }
+  async addThreadToHistoryMessage(
+    threadMessageDto: ThreadMessageDto,
+  ): Promise<IThreadMessage> {
+    const history = this.historyModel.findOne({
+      _id: threadMessageDto.historyMsgId,
+    });
+    if (history) {
+      const saveThreadMessage = new this.threadModel(threadMessageDto);
+      return await saveThreadMessage.save();
     }
+  }
 
-    async find(filters: ThreadMessage): Promise<IThreadMessage[]> {
-        return await this.threadModel.find(filters)
-            .lean()
-            .exec();
-    }
+  async find(filters: ThreadMessage): Promise<IThreadMessage[]> {
+    return await this.threadModel
+      .find(filters)
+      .lean()
+      .exec();
+  }
 }

@@ -22,14 +22,20 @@ import { AuthModule } from '../auth/auth.module';
 import { ThreadMessageUseCase } from '../../usecases/usecase/threadmessage.usercase';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'Kendal', schema: KendalSchema },
-  { name: 'HistoryMessage', schema: HistoryMessageSchema },
-  { name: 'ThreadMessage', schema: ThreadMessageSchema }]),
-    AuthModule],
-  controllers: [KendalController,
+  imports: [
+    MongooseModule.forFeature([
+      { name: 'Kendal', schema: KendalSchema },
+      { name: 'HistoryMessage', schema: HistoryMessageSchema },
+      { name: 'ThreadMessage', schema: ThreadMessageSchema },
+    ]),
+    AuthModule,
+  ],
+  controllers: [
+    KendalController,
     KendalbotController,
     HistorymessageController,
-    ThreadmessageController],
+    ThreadmessageController,
+  ],
   providers: [
     KendalUseCase,
     KendalBotUseCase,
@@ -38,6 +44,7 @@ import { ThreadMessageUseCase } from '../../usecases/usecase/threadmessage.userc
     { provide: KendalRepository, useClass: KendalMongoDB },
     { provide: KendalBotRepository, useClass: KendalBotMongoDB },
     { provide: HistoryMessageRepository, useClass: HistoryMessageMongoDB },
-    { provide: ThreadMessageRepository, useClass: ThreadMessageMongoDB }],
+    { provide: ThreadMessageRepository, useClass: ThreadMessageMongoDB },
+  ],
 })
-export class KendalModule { }
+export class KendalModule {}

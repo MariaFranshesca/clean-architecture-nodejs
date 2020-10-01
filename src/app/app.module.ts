@@ -7,10 +7,12 @@ import 'dotenv/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.DB_CONNECTION, { useNewUrlParser: true }),
+    MongooseModule.forRoot(process.env.DB_CONNECTION, {
+      useNewUrlParser: true,
+    }),
     KendalModule,
     AuthModule,
   ],
   controllers: [StatusController],
 })
-export class AppModule { }
+export class AppModule {}

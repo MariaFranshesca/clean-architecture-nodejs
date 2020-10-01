@@ -2,6 +2,5 @@ import { Controller } from '@nestjs/common';
 
 @Controller('auth')
 export class AuthController {
-
-    // metodo de login
+  // metodo de login
 }

@@ -5,10 +5,9 @@ import { ThreadMessage } from '../../entities/entity/threadmessage.entity';
 
 @Injectable()
 export class ThreadMessageUseCase {
+  constructor(private readonly threadmsgrepository: ThreadMessageRepository) {}
 
-    constructor(private readonly threadmsgrepository: ThreadMessageRepository) { }
-
-    async find(filters: ThreadMessage): Promise<IThreadMessage[]> {
-        return await this.threadmsgrepository.find(filters);
-    }
+  async find(filters: ThreadMessage): Promise<IThreadMessage[]> {
+    return await this.threadmsgrepository.find(filters);
+  }
 }

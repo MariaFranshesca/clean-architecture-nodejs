@@ -5,10 +5,11 @@ import { IHistoryMessage } from '../../entities/interfaces/historymessage.interf
 
 @Injectable()
 export class HistoryMessageUseCase {
+  constructor(
+    private readonly historymsgrepository: HistoryMessageRepository,
+  ) {}
 
-    constructor(private readonly historymsgrepository: HistoryMessageRepository) { }
-
-    async find(filters: HistoryMessage): Promise<IHistoryMessage[]> {
-        return await this.historymsgrepository.find(filters);
-    }
+  async find(filters: HistoryMessage): Promise<IHistoryMessage[]> {
+    return await this.historymsgrepository.find(filters);
+  }
 }
