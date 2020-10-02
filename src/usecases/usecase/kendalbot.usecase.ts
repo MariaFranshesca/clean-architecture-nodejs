@@ -22,13 +22,14 @@ export class KendalBotUseCase {
     headerkendalbot: HeaderKendalBotDto,
     kendalBotDto: KendalBotDto,
   ): Promise<KendalBotResponse> {
+    try {
     const results = await Promise.all([
       this.historyrepository.findBy(headerkendalbot),
       this.userrespository.findByUsername(headerkendalbot.username),
     ]);
     let historyMessage = results[0];
     const user = results[1];
-
+    
     if (historyMessage == null) {
       const historymessagedto = new HistoryMessageDto(
         headerkendalbot.ip,
@@ -36,6 +37,9 @@ export class KendalBotUseCase {
         headerkendalbot.aditionalInfo,
         user._id,
       );
+
+      
+
       historyMessage = await this.historyrepository.initHistoryMessage(
         historymessagedto,
       );
@@ -68,5 +72,8 @@ export class KendalBotUseCase {
     historyMessage.threadMessages.push(threadoutputmsgsave);
     await this.historyrepository.update(historyMessage);
     return kendalbot;
+  }catch(ex) {
+      console.log(ex)
+  }
   }
 }

@@ -5,7 +5,7 @@ import {
   UsePipes,
   ValidationPipe,
   Body,
-  HttpException,
+  HttpException,, Param
 } from '@nestjs/common';
 import { ApiUseTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { KendalBotResponse } from '../../../entities/entity/kendalbot.entity';
@@ -36,7 +36,7 @@ export class KendalbotController {
         'localhost',
         'chrome',
         'desktop',
-        'JMENDOZAT',
+        'jmendozat13',
       );
       return await this.kendalBotUseCase.chatBot(headerKendalBot, kendalbotDto);
     } catch (err) {
