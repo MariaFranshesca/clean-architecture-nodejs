@@ -5,7 +5,7 @@ import {
   UsePipes,
   ValidationPipe,
   Body,
-  HttpException,, Param
+  HttpException,Headers
 } from '@nestjs/common';
 import { ApiUseTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { KendalBotResponse } from '../../../entities/entity/kendalbot.entity';
@@ -30,13 +30,14 @@ export class KendalbotController {
     description: 'Server error',
   })
   @UsePipes(new ValidationPipe())
-  async chatbot(@Body() kendalbotDto: KendalBotDto) {
+  async chatbot(@Headers() headers, @Body() kendalbotDto: KendalBotDto) {
     try {
+      const {ip, device, aditionalInfo, username} = headers
       const headerKendalBot = new HeaderKendalBotDto(
-        'localhost',
-        'chrome',
-        'desktop',
-        'jmendozat13',
+        ip,
+        device,
+        aditionalInfo,
+        username,
       );
       return await this.kendalBotUseCase.chatBot(headerKendalBot, kendalbotDto);
     } catch (err) {

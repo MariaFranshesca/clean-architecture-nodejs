@@ -38,8 +38,6 @@ export class KendalBotUseCase {
         user._id,
       );
 
-      
-
       historyMessage = await this.historyrepository.initHistoryMessage(
         historymessagedto,
       );
