@@ -7,7 +7,6 @@ import { UserMongoDB } from 'src/core/data/source/database/mongodb/user.mongodb'
 import { UserUseCase } from 'src/core/domain/usecases/user.usecase'
 import { UserRepository } from 'src/core/domain/repository/user.repository'
 
-
 @Module({
   imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])],
   controllers: [UserController, AuthController],

@@ -1,12 +1,12 @@
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { KendalBotRepository } from 'src/core/domain/repository/kendalbot.repository'
-import { IKendal } from 'src/core/domain/entities/interfaces/kendal.interfaces'
+import { KendalDocument } from 'src/core/data/source/database/mongodb/documents/KendalDocument'
 import { KendalBotDto, removeSpacesBlank } from 'src/core/domain/entities/dto/kendalbot.dto'
 import { KendalBotOption, KendalBotResponse } from 'src/core/domain/entities/entity/kendalbot.entity'
 
 export class KendalBotMongoDB implements KendalBotRepository {
-  constructor(@InjectModel('Kendal') private readonly kendalModel: Model<IKendal>) {}
+  constructor(@InjectModel('Kendal') private readonly kendalModel: Model<KendalDocument>) {}
 
   async chatBot(kendalBotDto: KendalBotDto): Promise<KendalBotResponse> {
     const messagebot = removeSpacesBlank(kendalBotDto.inputmessage)

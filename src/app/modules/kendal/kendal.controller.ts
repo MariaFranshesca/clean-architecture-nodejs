@@ -11,32 +11,18 @@ import {
   Param,
   Put,
 } from '@nestjs/common'
-import { ApiUseTags, ApiOperation, ApiResponse, ApiImplicitParam } from '@nestjs/swagger'
-import { ClassKendalDto } from 'src/core/domain/entities/dto/kendal.dto'
-import { Kendal } from 'src/core/domain/entities/entity/kendal.entity'
-import { IKendal } from 'src/core/domain/entities/interfaces/kendal.interfaces'
-import { KendalUseCase } from 'src/core/domain/usecases/kendal.usecase'
-
+import { Kendal } from 'src/core/domain/entities/Kendal'
+import { KendalUseCase } from 'src/core/domain/usecases/KendalUseCase'
 
 @Controller('kendal')
-@ApiUseTags('Kendal')
 export class KendalController {
   constructor(private readonly kendalUseCase: KendalUseCase) {}
+
   @Post()
-  @ApiOperation({ title: 'Add logical knowledge to Kendal' })
-  @ApiResponse({
-    status: HttpStatus.CREATED,
-    description: 'The record has been successfully created.',
-    type: ClassKendalDto,
-  })
-  @ApiResponse({
-    status: 500,
-    description: 'Server error',
-  })
   @UsePipes(new ValidationPipe())
-  async create(@Body() createKendalDto: ClassKendalDto) {
+  async create(@Body() kendal: Kendal) {
     try {
-      const wallv = await this.kendalUseCase.create(createKendalDto)
+      const wallv = await this.kendalUseCase.create(kendal)
       return wallv
     } catch (err) {
       throw new HttpException(
@@ -47,44 +33,21 @@ export class KendalController {
   }
 
   @Get()
-  @ApiOperation({ title: 'Return all logical knowledge of Kendal' })
-  @ApiResponse({
-    status: HttpStatus.OK,
-    description: 'The found record',
-    type: Kendal,
-  })
-  async findAll(): Promise<IKendal[]> {
+  async findAll(): Promise<Kendal[]> {
     return await this.kendalUseCase.findAll()
   }
 
   @Delete(':id')
-  @ApiOperation({ title: 'Delete one element from Kendal' })
-  @ApiResponse({
-    status: HttpStatus.OK,
-    description: 'The found record',
-    type: Kendal,
-  })
-  @ApiImplicitParam({ name: 'id' })
   async deleteById(@Param() params) {
     await this.kendalUseCase.deleteById(params.id)
     return { status: 1, message: 'Eliminado Correctamente' }
   }
 
   @UsePipes(new ValidationPipe())
-  @Put(':id')
-  @ApiOperation({ title: 'Update logical knowledge to Kendal' })
-  @ApiResponse({
-    status: HttpStatus.CREATED,
-    description: 'The record has been successfully updated.',
-    type: ClassKendalDto,
-  })
-  @ApiResponse({
-    status: 500,
-    description: 'Server error',
-  })
-  async update(@Param('id') id: string, @Body() updateKendalDto: ClassKendalDto) {
+  @Put()
+  async update(@Body() kendal: Kendal) {
     try {
-      return await this.kendalUseCase.update(id, updateKendalDto)
+      return await this.kendalUseCase.update(kendal)
     } catch (err) {
       throw new HttpException(
         { status: HttpStatus.INTERNAL_SERVER_ERROR, error: err.message },

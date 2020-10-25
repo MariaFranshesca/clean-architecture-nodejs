@@ -7,7 +7,6 @@ import { UserUseCase } from 'src/core/domain/usecases/user.usecase'
 
 import { ValidationPipe } from '../../../pipes/validation.pipe'
 
-
 @Controller('user')
 @ApiUseTags('User')
 export class UserController {
