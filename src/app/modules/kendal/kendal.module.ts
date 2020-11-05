@@ -23,6 +23,8 @@ import { HistoryMessageMongoDB } from 'src/core/data/source/database/mongodb/his
 import { ThreadMessageRepository } from 'src/core/domain/repository/threadmessage.reposiitory'
 import { ThreadMessageMongoDB } from 'src/core/data/source/database/mongodb/ThreadMessageMongoDB'
 import { ThreadMessageDataSource } from 'src/core/data/source/ThreadMessageDataSource'
+import { HistoryMessageDataSource } from 'src/core/data/source/HistoryMessageDataSource'
+import { HistoryMessageRepositoryImpl } from 'src/core/data/repository/HistoryMessageRepositoryImpl'
 
 @Module({
   imports: [
@@ -43,7 +45,8 @@ import { ThreadMessageDataSource } from 'src/core/data/source/ThreadMessageDataS
     { provide: KendalDataSource, useClass: KendalMongoDB },
     { provide: KendalBotRepository, useClass: KendalBotMongoDB },
     { provide: ThreadMessageDataSource, useClass: ThreadMessageMongoDB },
-    { provide: HistoryMessageRepository, useClass: HistoryMessageMongoDB },
+    { provide: HistoryMessageRepository, useClass: HistoryMessageRepositoryImpl },
+    { provide: HistoryMessageDataSource, useClass: HistoryMessageMongoDB },
     { provide: ThreadMessageRepository, useClass: ThreadMessageMongoDB },
   ],
 })
