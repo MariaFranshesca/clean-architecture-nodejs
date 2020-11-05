@@ -4,4 +4,8 @@ export abstract class ThreadMessageDataSource {
   abstract deleteById(id: string): Promise<string>
   abstract update(threadMessage: ThreadMessage): Promise<string>
   abstract findAll(): Promise<ThreadMessage[]>
+
+  //Lo que se necesita para el botsito
+  abstract addThreadToHistoryMessage(threadMessage: ThreadMessage): Promise<ThreadMessage>
+  abstract find(filters: ThreadMessage): Promise<ThreadMessage[]>
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Kendal } from 'src/core/domain/entities/Kendal'
 import { KendalRepository } from 'src/core/domain/repository/KendalRepository'
-import { KendalDataSource } from '../source/kendal.datasource'
+import { KendalDataSource } from '../source/KendalDataSource'
 
 @Injectable()
 export class KendalRepositoryImpl implements KendalRepository {

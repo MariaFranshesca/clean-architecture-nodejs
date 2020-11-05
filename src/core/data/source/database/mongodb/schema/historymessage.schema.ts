@@ -11,7 +11,7 @@ export const HistoryMessageSchema = new mongoose.Schema({
   device: {
     type: String,
   },
-  user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  user: { type: mongoose.Schema.ObjectId, ref: 'users' },
   aditionalInfo: { type: String },
-  threadMessages: [{ type: mongoose.Schema.ObjectId, ref: 'ThreadMessage' }],
+  threadMessages: [{ type: mongoose.Schema.ObjectId, ref: 'threadMessages' }],
 })

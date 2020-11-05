@@ -2,14 +2,11 @@ import { Module } from '@nestjs/common'
 import { KendalController } from './kendal.controller'
 import { MongooseModule } from '@nestjs/mongoose'
 import { KendalbotController } from './kendalbot/kendalbot.controller'
-
 import { HistorymessageController } from './historymessage/historymessage.controller'
 import { ThreadmessageController } from './threadmessage/threadmessage.controller'
-
 import { AuthModule } from '../auth/auth.module'
-
 import { KendalRepositoryImpl } from 'src/core/data/repository/KendalRepositoryImpl'
-import { KendalDataSource } from 'src/core/data/source/kendal.datasource'
+import { KendalDataSource } from 'src/core/data/source/KendalDataSource'
 import { KendalSchema } from 'src/core/data/source/database/mongodb/schema/KendalSchema'
 import { HistoryMessageSchema } from 'src/core/data/source/database/mongodb/schema/historymessage.schema'
 import { ThreadMessageSchema } from 'src/core/data/source/database/mongodb/schema/threadmessage.schema'
@@ -24,7 +21,8 @@ import { KendalBotMongoDB } from 'src/core/data/source/database/mongodb/kendalbo
 import { HistoryMessageRepository } from 'src/core/domain/repository/HistoryMessageRepository'
 import { HistoryMessageMongoDB } from 'src/core/data/source/database/mongodb/historymessage.mongodb'
 import { ThreadMessageRepository } from 'src/core/domain/repository/threadmessage.reposiitory'
-import { ThreadMessageMongoDB } from 'src/core/data/source/database/mongodb/threadmessage.mongodb'
+import { ThreadMessageMongoDB } from 'src/core/data/source/database/mongodb/ThreadMessageMongoDB'
+import { ThreadMessageDataSource } from 'src/core/data/source/ThreadMessageDataSource'
 
 @Module({
   imports: [
@@ -44,6 +42,7 @@ import { ThreadMessageMongoDB } from 'src/core/data/source/database/mongodb/thre
     { provide: KendalRepository, useClass: KendalRepositoryImpl },
     { provide: KendalDataSource, useClass: KendalMongoDB },
     { provide: KendalBotRepository, useClass: KendalBotMongoDB },
+    { provide: ThreadMessageDataSource, useClass: ThreadMessageMongoDB },
     { provide: HistoryMessageRepository, useClass: HistoryMessageMongoDB },
     { provide: ThreadMessageRepository, useClass: ThreadMessageMongoDB },
   ],

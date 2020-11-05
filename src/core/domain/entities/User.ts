@@ -1,6 +1,6 @@
 export class User {
-    id: string
-    username: string
-    password: string
-    date: Date
+  id: string
+  username: string
+  password: string
+  date: Date
 }

@@ -1,6 +1,6 @@
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { KendalDataSource } from '../../kendal.datasource'
+import { KendalDataSource } from '../../KendalDataSource'
 import { KendalDocument } from 'src/core/data/source/database/mongodb/documents/KendalDocument'
 import { Kendal } from 'src/core/domain/entities/Kendal'
 
