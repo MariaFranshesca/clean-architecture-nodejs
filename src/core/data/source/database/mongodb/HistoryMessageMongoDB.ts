@@ -3,11 +3,12 @@ import { InjectModel } from '@nestjs/mongoose'
 import { HeaderKendalBotDto } from 'src/core/domain/entities/dto/headerkendalbot.dto'
 import { HistoryMessage } from 'src/core/domain/entities/historymessage'
 import { HistoryMessageDataSource } from '../../HistoryMessageDataSource'
+import { HistoryMessageDocument } from './documents/HistoryMessageDocument'
 
 export class HistoryMessageMongoDB implements HistoryMessageDataSource {
   constructor(
     @InjectModel('HistoryMessage')
-    private readonly historyModel: Model<HistoryMessage>
+    private readonly historyModel: Model<HistoryMessageDocument>
   ) {}
 
   async initHistoryMessage(historymessage: HistoryMessage): Promise<HistoryMessage> {

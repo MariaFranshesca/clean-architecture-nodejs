@@ -25,6 +25,10 @@ import { ThreadMessageMongoDB } from 'src/core/data/source/database/mongodb/Thre
 import { ThreadMessageDataSource } from 'src/core/data/source/ThreadMessageDataSource'
 import { HistoryMessageDataSource } from 'src/core/data/source/HistoryMessageDataSource'
 import { HistoryMessageRepositoryImpl } from 'src/core/data/repository/HistoryMessageRepositoryImpl'
+import { UserDataSource } from 'src/core/data/source/UserDataSource'
+import { UserMongoDB } from 'src/core/data/source/database/mongodb/user.mongodb'
+import { UserRepository } from 'src/core/domain/repository/UserRepository'
+import { UserRepositoryImpl } from 'src/core/data/repository/UserRepositoryImpl'
 
 @Module({
   imports: [
@@ -43,11 +47,13 @@ import { HistoryMessageRepositoryImpl } from 'src/core/data/repository/HistoryMe
     ThreadMessageUseCase,
     { provide: KendalRepository, useClass: KendalRepositoryImpl },
     { provide: KendalDataSource, useClass: KendalMongoDB },
-    { provide: KendalBotRepository, useClass: KendalBotMongoDB },
     { provide: ThreadMessageDataSource, useClass: ThreadMessageMongoDB },
+    { provide: ThreadMessageRepository, useClass: ThreadMessageMongoDB },
     { provide: HistoryMessageRepository, useClass: HistoryMessageRepositoryImpl },
     { provide: HistoryMessageDataSource, useClass: HistoryMessageMongoDB },
-    { provide: ThreadMessageRepository, useClass: ThreadMessageMongoDB },
+    { provide: UserDataSource, useClass: UserMongoDB },
+    { provide: UserRepository, useClass: UserRepositoryImpl },
+    { provide: KendalBotRepository, useClass: KendalBotMongoDB },
   ],
 })
 export class KendalModule {}

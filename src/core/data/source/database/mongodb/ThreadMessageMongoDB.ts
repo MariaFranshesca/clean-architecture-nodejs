@@ -1,16 +1,16 @@
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { IThreadMessage } from 'src/core/domain/entities/interfaces/threadmessage.interfaces'
-import { IHistoryMessage } from 'src/core/domain/entities/interfaces/historymessage.interfaces'
 import { ThreadMessageDataSource } from '../../ThreadMessageDataSource'
 import { ThreadMessage } from 'src/core/domain/entities/ThreadMessage'
+import { HistoryMessageDocument } from './documents/HistoryMessageDocument'
+import { ThreadMessageDocument } from './documents/ThreadMessageDocument'
 
 export class ThreadMessageMongoDB implements ThreadMessageDataSource {
   constructor(
     @InjectModel('ThreadMessage')
-    private readonly threadModel: Model<IThreadMessage>,
+    private readonly threadModel: Model<ThreadMessageDocument>,
     @InjectModel('HistoryMessage')
-    private readonly historyModel: Model<IHistoryMessage>
+    private readonly historyModel: Model<HistoryMessageDocument>
   ) {}
 
   create(threadMessage: ThreadMessage): Promise<ThreadMessage> {
