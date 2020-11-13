@@ -1,10 +1,10 @@
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { HistoryMessageRepository } from 'src/core/domain/repository/HistoryMessageRepository'
 import { HeaderKendalBotDto } from 'src/core/domain/entities/dto/headerkendalbot.dto'
 import { HistoryMessage } from 'src/core/domain/entities/historymessage'
+import { HistoryMessageDataSource } from '../../HistoryMessageDataSource'
 
-export class HistoryMessageMongoDB implements HistoryMessageRepository {
+export class HistoryMessageMongoDB implements HistoryMessageDataSource {
   constructor(
     @InjectModel('HistoryMessage')
     private readonly historyModel: Model<HistoryMessage>
