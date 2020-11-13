@@ -15,9 +15,8 @@ import { KendalBotUseCase } from 'src/core/domain/usecases/kendalbot.usecase'
 import { HistoryMessageUseCase } from 'src/core/domain/usecases/historymessage.usecase'
 import { ThreadMessageUseCase } from 'src/core/domain/usecases/threadmessage.usercase'
 import { KendalRepository } from 'src/core/domain/repository/KendalRepository'
-import { KendalBotRepository } from 'src/core/domain/repository/kendalbot.repository'
+import { KendalBotRepository } from 'src/core/domain/repository/KendalBotRepository'
 import { KendalMongoDB } from 'src/core/data/source/database/mongodb/KendalMongoDB'
-import { KendalBotMongoDB } from 'src/core/data/source/database/mongodb/kendalbot.mongodb'
 import { HistoryMessageRepository } from 'src/core/domain/repository/HistoryMessageRepository'
 import { HistoryMessageMongoDB } from 'src/core/data/source/database/mongodb/HistoryMessageMongoDB'
 import { ThreadMessageRepository } from 'src/core/domain/repository/threadmessage.reposiitory'
@@ -29,6 +28,9 @@ import { UserDataSource } from 'src/core/data/source/UserDataSource'
 import { UserMongoDB } from 'src/core/data/source/database/mongodb/user.mongodb'
 import { UserRepository } from 'src/core/domain/repository/UserRepository'
 import { UserRepositoryImpl } from 'src/core/data/repository/UserRepositoryImpl'
+import { KendalBotRepositoryImpl } from 'src/core/data/repository/KendalBotRepositoryImpl'
+import { KendalBotDataSource } from 'src/core/data/source/KendalBotDataSource'
+import { KendalBotMongoDB } from 'src/core/data/source/database/mongodb/KendalBotMongoDB'
 
 @Module({
   imports: [
@@ -53,7 +55,8 @@ import { UserRepositoryImpl } from 'src/core/data/repository/UserRepositoryImpl'
     { provide: HistoryMessageDataSource, useClass: HistoryMessageMongoDB },
     { provide: UserDataSource, useClass: UserMongoDB },
     { provide: UserRepository, useClass: UserRepositoryImpl },
-    { provide: KendalBotRepository, useClass: KendalBotMongoDB },
+    { provide: KendalBotRepository, useClass: KendalBotRepositoryImpl },
+    { provide: KendalBotDataSource, useClass: KendalBotMongoDB },
   ],
 })
 export class KendalModule {}

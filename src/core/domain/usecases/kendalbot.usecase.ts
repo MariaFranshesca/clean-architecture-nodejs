@@ -5,7 +5,7 @@ import { KendalBotDto } from '../entities/dto/kendalbot.dto'
 import { ThreadMessageDto } from '../entities/dto/threadmessage.dto'
 import { KendalBotResponse } from '../entities/entity/kendalbot.entity'
 import { HistoryMessageRepository } from '../repository/historymessage.repository'
-import { KendalBotRepository } from '../repository/kendalbot.repository'
+import { KendalBotRepository } from '../repository/KendalBotRepository'
 import { ThreadMessageRepository } from '../repository/threadmessage.reposiitory'
 import { UserRepository } from '../repository/user.repository'
 
@@ -46,18 +46,18 @@ export class KendalBotUseCase {
 
       const resultstasks = await Promise.all([
         this.threadrepository.addThreadToHistoryMessage(threadinputmessage),
-        this.kendalbotrepository.chatBot(kendalBotDto),
+        //this.kendalbotrepository.chatBot(kendalBotDto),
       ])
 
       const threadinputmsgsave = resultstasks[0]
       historyMessage.threadMessages.push(threadinputmsgsave)
 
       const kendalbot = resultstasks[1]
-      const threadoutputmessage = new ThreadMessageDto(kendalbot.outputmessage, 'kendal', historyMessage._id, 'output')
-      const threadoutputmsgsave = await this.threadrepository.addThreadToHistoryMessage(threadoutputmessage)
-      historyMessage.threadMessages.push(threadoutputmsgsave)
+      //const threadoutputmessage = new ThreadMessageDto(kendalbot.outputmessage, 'kendal', historyMessage._id, 'output')
+     // const threadoutputmsgsave = await this.threadrepository.addThreadToHistoryMessage(threadoutputmessage)
+      //historyMessage.threadMessages.push(threadoutputmsgsave)
       await this.historyrepository.update(historyMessage)
-      return kendalbot
+      return null
     } catch (ex) {
       console.log(ex)
     }
