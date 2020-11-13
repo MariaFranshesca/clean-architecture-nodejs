@@ -19,7 +19,7 @@ import { KendalBotRepository } from 'src/core/domain/repository/kendalbot.reposi
 import { KendalMongoDB } from 'src/core/data/source/database/mongodb/KendalMongoDB'
 import { KendalBotMongoDB } from 'src/core/data/source/database/mongodb/kendalbot.mongodb'
 import { HistoryMessageRepository } from 'src/core/domain/repository/HistoryMessageRepository'
-import { HistoryMessageMongoDB } from 'src/core/data/source/database/mongodb/historymessage.mongodb'
+import { HistoryMessageMongoDB } from 'src/core/data/source/database/mongodb/HistoryMessageMongoDB'
 import { ThreadMessageRepository } from 'src/core/domain/repository/threadmessage.reposiitory'
 import { ThreadMessageMongoDB } from 'src/core/data/source/database/mongodb/ThreadMessageMongoDB'
 import { ThreadMessageDataSource } from 'src/core/data/source/ThreadMessageDataSource'
