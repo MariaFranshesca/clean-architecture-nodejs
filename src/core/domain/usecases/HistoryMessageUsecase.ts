@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common'
+import { HistoryMessage } from '../entities/HistoryMessage'
 import { HistoryMessageRepository } from '../repository/HistoryMessageRepository'
-import { HistoryMessage } from '../entities/entity/historymessage.entity'
-import { IHistoryMessage } from '../entities/interfaces/historymessage.interfaces'
 
 @Injectable()
 export class HistoryMessageUseCase {

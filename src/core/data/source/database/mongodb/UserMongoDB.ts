@@ -22,4 +22,7 @@ export class UserMongoDB implements UserDataSource {
   async findAll(): Promise<User[]> {
     return await this.userModel.find().exec()
   }
+  async findByUsername(username: string): Promise<User> {
+    return await this.userModel.findOne({ username }).let()
+  }
 }

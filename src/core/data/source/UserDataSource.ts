@@ -4,4 +4,5 @@ export abstract class UserDataSource {
   abstract deleteById(id: string): Promise<string>
   abstract update(user: User): Promise<string>
   abstract findAll(): Promise<User[]>
+  abstract findByUsername(username: string): Promise<User>
 }

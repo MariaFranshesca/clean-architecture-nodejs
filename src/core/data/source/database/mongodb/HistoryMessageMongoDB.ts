@@ -1,9 +1,9 @@
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { HeaderKendalBotDto } from 'src/core/domain/entities/dto/headerkendalbot.dto'
 import { HistoryMessage } from 'src/core/domain/entities/historymessage'
 import { HistoryMessageDataSource } from '../../HistoryMessageDataSource'
 import { HistoryMessageDocument } from './documents/HistoryMessageDocument'
+import { KendalBotInput } from 'src/core/domain/entities/KendalBotInput'
 
 export class HistoryMessageMongoDB implements HistoryMessageDataSource {
   constructor(
@@ -15,10 +15,10 @@ export class HistoryMessageMongoDB implements HistoryMessageDataSource {
     const saveHistoryMessage = new this.historyModel(historymessage)
     return await saveHistoryMessage.save()
   }
-  async findBy(headerKendalBot: HeaderKendalBotDto): Promise<HistoryMessage> {
+  async findBy(kendalInput: KendalBotInput): Promise<HistoryMessage> {
     return await this.historyModel
-      .findOne({ ip: headerKendalBot.ip, device: headerKendalBot.device })
-      .populate('user')
+      .findOne({ ip: kendalInput.ip, device: kendalInput.device })
+      .populate('users')
       .lean()
   }
   async update(historymessage: HistoryMessage): Promise<HistoryMessage> {

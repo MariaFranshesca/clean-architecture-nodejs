@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
-import { HeaderKendalBotDto } from 'src/core/domain/entities/dto/headerkendalbot.dto'
 import { HistoryMessage } from 'src/core/domain/entities/HistoryMessage'
+import { KendalBotInput } from 'src/core/domain/entities/KendalBotInput'
 import { HistoryMessageRepository } from 'src/core/domain/repository/HistoryMessageRepository'
 import { HistoryMessageDataSource } from '../source/HistoryMessageDataSource'
 
@@ -11,8 +11,8 @@ export class HistoryMessageRepositoryImpl implements HistoryMessageRepository {
   async initHistoryMessage(historymessage: HistoryMessage): Promise<HistoryMessage> {
     return await this.historyMessageDataSource.initHistoryMessage(historymessage)
   }
-  async findBy(headerKendalBotDto: HeaderKendalBotDto): Promise<HistoryMessage> {
-    return await this.historyMessageDataSource.findBy(headerKendalBotDto)
+  async findBy(kendalBotInput: KendalBotInput): Promise<HistoryMessage> {
+    return await this.historyMessageDataSource.findBy(kendalBotInput)
   }
   async update(historymessage: HistoryMessage): Promise<HistoryMessage> {
     return await this.historyMessageDataSource.update(historymessage)

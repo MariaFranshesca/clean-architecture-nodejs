@@ -3,7 +3,7 @@ import { UserRepository } from '../repository/UserRepository'
 import { User } from '../entities/User'
 
 @Injectable()
-export class KendalUseCase {
+export class UserUseCase {
   constructor(private userRepository: UserRepository) {}
 
   async create(user: User): Promise<User> {

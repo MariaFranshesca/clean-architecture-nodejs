@@ -2,15 +2,24 @@ import { Module } from '@nestjs/common'
 import { UserController } from './user/user.controller'
 import { AuthController } from './auth.controller'
 import { MongooseModule } from '@nestjs/mongoose'
-import { UserSchema } from 'src/core/data/source/database/mongodb/schema/user.schema'
-import { UserMongoDB } from 'src/core/data/source/database/mongodb/user.mongodb'
-import { UserUseCase } from 'src/core/domain/usecases/user.usecase'
-import { UserRepository } from 'src/core/domain/repository/user.repository'
+import { UserSchema } from 'src/core/data/source/database/mongodb/schema/UserSchema'
+import { UserUseCase } from 'src/core/domain/usecases/UserUseCase'
+import { UserRepository } from 'src/core/domain/repository/UserRepository'
+import { UserRepositoryImpl } from 'src/core/data/repository/UserRepositoryImpl'
+import { UserDataSource } from 'src/core/data/source/UserDataSource'
+import { UserMongoDB } from 'src/core/data/source/database/mongodb/UserMongoDB'
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])],
   controllers: [UserController, AuthController],
-  providers: [UserUseCase, { provide: UserRepository, useClass: UserMongoDB }],
-  exports: [{ provide: UserRepository, useClass: UserMongoDB }],
+  providers: [
+    UserUseCase,
+    { provide: UserRepository, useClass: UserRepositoryImpl },
+    { provide: UserDataSource, useClass: UserMongoDB },
+  ],
+  exports: [
+    { provide: UserRepository, useClass: UserRepositoryImpl },
+    { provide: UserDataSource, useClass: UserMongoDB },
+  ],
 })
 export class AuthModule {}

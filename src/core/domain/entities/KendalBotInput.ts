@@ -1,5 +1,6 @@
-export class HeaderKendalBotDto {
+export class KendalBotInput {
   ip: string
+  input: string
   device: string
   aditionalInfo: string
   username: string

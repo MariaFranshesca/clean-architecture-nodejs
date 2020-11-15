@@ -1,5 +1,4 @@
-import { KendalBotOption } from './entity/kendalbot.entity'
-
+import { KendalBotOption } from './KendalBotOption'
 export class KendalBot {
   outputmessage: string
   options: KendalBotOption[]

@@ -1,4 +1,4 @@
-import { Controller, Post, HttpStatus, Body } from '@nestjs/common'
+import { Controller, Post, Body } from '@nestjs/common'
 import { HistoryMessage } from 'src/core/domain/entities/HistoryMessage'
 import { HistoryMessageUseCase } from 'src/core/domain/usecases/historymessageUsecase'
 
