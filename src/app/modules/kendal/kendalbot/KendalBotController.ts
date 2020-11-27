@@ -4,7 +4,7 @@ import { KendalBotUseCase } from 'src/core/domain/usecases/KendalBotUseCase'
 import { KendalBotInputRequest } from './KendalBotInputRequest'
 
 @Controller('kendalbot')
-export class KendalbotController {
+export class KendalBotController {
   constructor(private readonly kendalBotUseCase: KendalBotUseCase) {}
 
   @Post()

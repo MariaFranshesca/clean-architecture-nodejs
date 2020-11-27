@@ -4,7 +4,9 @@ import { KendalBotDataSource } from '../../KendalBotDataSource'
 import { InjectModel } from '@nestjs/mongoose'
 import { KendalDocument } from './documents/KendalDocument'
 import { KendalBotOption } from 'src/core/domain/entities/KendalBotOption'
+import { Injectable } from '@nestjs/common'
 
+@Injectable()
 export class KendalBotMongoDB implements KendalBotDataSource {
   constructor(@InjectModel('Kendal') private readonly kendalModel: Model<KendalDocument>) {}
 

@@ -4,7 +4,9 @@ import { ThreadMessageDataSource } from '../../ThreadMessageDataSource'
 import { ThreadMessage } from 'src/core/domain/entities/ThreadMessage'
 import { HistoryMessageDocument } from './documents/HistoryMessageDocument'
 import { ThreadMessageDocument } from './documents/ThreadMessageDocument'
+import { Injectable } from '@nestjs/common'
 
+@Injectable()
 export class ThreadMessageMongoDB implements ThreadMessageDataSource {
   constructor(
     @InjectModel('ThreadMessage')

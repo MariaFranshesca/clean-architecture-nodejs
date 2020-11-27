@@ -13,9 +13,9 @@ import { UserDataSource } from '../source/UserDataSource'
 export class KendalBotRepositoryImpl implements KendalBotRepository {
   constructor(
     private kendalBotDataSource: KendalBotDataSource,
-    private userDataSource: UserDataSource,
     private historyMessageDataSource: HistoryMessageDataSource,
-    private threadMessageDataSource: ThreadMessageDataSource
+    private threadMessageDataSource: ThreadMessageDataSource,
+    private userDataSource: UserDataSource,
   ) {}
 
   async chatBot(kendalBotInput: KendalBotInput): Promise<KendalBot> {

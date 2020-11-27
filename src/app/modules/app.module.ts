@@ -11,7 +11,7 @@ import 'dotenv/config'
       useNewUrlParser: true,
     }),
     KendalModule,
-    AuthModule,
+    //AuthModule
   ],
   controllers: [StatusController],
 })
