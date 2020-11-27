@@ -26,31 +26,22 @@ import { HistoryMessageUseCase } from 'src/core/domain/usecases/historymessageUs
 import { ThreadMessageUseCase } from 'src/core/domain/usecases/ThreadMessageUseCase'
 import { ThreadMessageRepositoryImpl } from 'src/core/data/repository/ThreadMessageRepositoryImpl'
 import { ThreadMessageRepository } from 'src/core/domain/repository/ThreadMessageRepository'
-import { UserSchema } from 'src/core/data/source/database/mongodb/schema/UserSchema'
-import { UserUseCase } from 'src/core/domain/usecases/UserUseCase'
-import { UserDataSource } from 'src/core/data/source/UserDataSource'
-import { UserMongoDB } from 'src/core/data/source/database/mongodb/UserMongoDB'
-import { UserRepository } from 'src/core/domain/repository/UserRepository'
-import { UserRepositoryImpl } from 'src/core/data/repository/UserRepositoryImpl'
 import { KendalBotController } from './kendalbot/KendalBotController'
 
 @Module({
   imports: [
+    AuthModule,
     MongooseModule.forFeature([
       { name: 'Kendal', schema: KendalSchema },
       { name: 'HistoryMessage', schema: HistoryMessageSchema },
       { name: 'ThreadMessage', schema: ThreadMessageSchema },
-      { name: 'User', schema: UserSchema }
-    ])
+    ]),
   ],
   controllers: [KendalController, HistorymessageController, ThreadmessageController, KendalBotController],
   providers: [
     KendalUseCase,
     HistoryMessageUseCase,
     ThreadMessageUseCase,
-    UserUseCase,
-    { provide: UserDataSource, useClass: UserMongoDB },
-    { provide: UserRepository, useClass: UserRepositoryImpl },
     { provide: ThreadMessageDataSource, useClass: ThreadMessageMongoDB },
     { provide: HistoryMessageDataSource, useClass: HistoryMessageMongoDB },
     { provide: KendalBotDataSource, useClass: KendalBotMongoDB },

@@ -19,7 +19,8 @@ import { UserMongoDB } from 'src/core/data/source/database/mongodb/UserMongoDB'
   ],
   exports: [
     { provide: UserDataSource, useClass: UserMongoDB },
-    { provide: UserRepository, useClass: UserRepositoryImpl }
+    { provide: UserRepository, useClass: UserRepositoryImpl},
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])
   ],
 })
 export class AuthModule {}
