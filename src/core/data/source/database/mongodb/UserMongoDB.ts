@@ -11,7 +11,8 @@ export class UserMongoDB implements UserDataSource {
 
   async create(user: User): Promise<User> {
     const createUser = new this.userModel(user)
-    return await createUser.save()
+    const document: UserDocument =  await createUser.save()
+    return this.mapUserFromDocument(document)
   }
   async deleteById(id: string): Promise<string> {
     await this.userModel.deleteOne({ _id: id })
@@ -22,9 +23,20 @@ export class UserMongoDB implements UserDataSource {
     return 'Editado correctamente'
   }
   async findAll(): Promise<User[]> {
-    return await this.userModel.find().exec()
-  }
+    const documents: UserDocument[] = await this.userModel.find().exec()
+    return documents.map(item => this.mapUserFromDocument(item))
+  } 
   async findByUsername(username: string): Promise<User> {
-    return await this.userModel.findOne({ username }).let()
+    const document: UserDocument = await this.userModel.findOne({ username }).exec()
+    return this.mapUserFromDocument(document)
+  }
+
+  private mapUserFromDocument(document: UserDocument) {
+    const user = new User()
+    user.id = document.id
+    user.username = document.username
+    user.password = document.password
+    user.date = document.date
+    return user
   }
 }
