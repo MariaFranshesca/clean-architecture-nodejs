@@ -10,8 +10,8 @@ import 'dotenv/config'
     MongooseModule.forRoot(process.env.DB_CONNECTION, {
       useNewUrlParser: true,
     }),
-    KendalModule,
-    AuthModule
+    AuthModule,
+    KendalModule
   ],
   controllers: [StatusController],
 })

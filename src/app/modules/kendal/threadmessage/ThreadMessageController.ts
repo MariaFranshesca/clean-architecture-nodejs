@@ -3,7 +3,7 @@ import { ThreadMessage } from 'src/core/domain/entities/ThreadMessage'
 import { ThreadMessageUseCase } from 'src/core/domain/usecases/ThreadMessageUseCase'
 
 @Controller('threadmessage')
-export class ThreadmessageController {
+export class ThreadMessageController {
   constructor(private readonly threadMsgUseCase: ThreadMessageUseCase) {}
 
   @Post()

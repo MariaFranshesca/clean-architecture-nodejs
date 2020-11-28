@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { ThreadmessageController } from './threadmessage.controller'
+import { ThreadMessageController } from './ThreadMessageController'
 
 describe('Threadmessage Controller', () => {
-  let controller: ThreadmessageController
+  let controller: ThreadMessageController
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ThreadmessageController],
+      controllers: [ThreadMessageController],
     }).compile()
 
-    controller = module.get<ThreadmessageController>(ThreadmessageController)
+    controller = module.get<ThreadMessageController>(ThreadMessageController)
   })
 
   it('should be defined', () => {

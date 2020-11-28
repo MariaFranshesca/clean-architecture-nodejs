@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 import { KendalController } from './kendal.controller'
 import { MongooseModule } from '@nestjs/mongoose'
-import { HistorymessageController } from './historymessage/historymessage.controller'
-import { ThreadmessageController } from './threadmessage/threadmessage.controller'
+import { HistoryMessageController } from './historymessage/HistoryMessageController'
+import { ThreadMessageController } from './threadmessage/ThreadMessageController'
 import { AuthModule } from '../auth/auth.module'
 import { KendalRepositoryImpl } from 'src/core/data/repository/KendalRepositoryImpl'
 import { KendalDataSource } from 'src/core/data/source/KendalDataSource'
@@ -27,6 +27,7 @@ import { ThreadMessageUseCase } from 'src/core/domain/usecases/ThreadMessageUseC
 import { ThreadMessageRepositoryImpl } from 'src/core/data/repository/ThreadMessageRepositoryImpl'
 import { ThreadMessageRepository } from 'src/core/domain/repository/ThreadMessageRepository'
 import { KendalBotController } from './kendalbot/KendalBotController'
+import { KendalBotUseCase } from 'src/core/domain/usecases/KendalBotUseCase'
 
 @Module({
   imports: [
@@ -37,19 +38,20 @@ import { KendalBotController } from './kendalbot/KendalBotController'
       { name: 'ThreadMessage', schema: ThreadMessageSchema },
     ]),
   ],
-  controllers: [KendalController, HistorymessageController, ThreadmessageController, KendalBotController],
+  controllers: [KendalController, HistoryMessageController, ThreadMessageController, KendalBotController],
   providers: [
+    KendalBotUseCase,
     KendalUseCase,
     HistoryMessageUseCase,
     ThreadMessageUseCase,
     { provide: ThreadMessageDataSource, useClass: ThreadMessageMongoDB },
+    { provide: ThreadMessageRepository, useClass: ThreadMessageRepositoryImpl },
     { provide: HistoryMessageDataSource, useClass: HistoryMessageMongoDB },
-    { provide: KendalBotDataSource, useClass: KendalBotMongoDB },
+    { provide: HistoryMessageRepository, useClass: HistoryMessageRepositoryImpl },
     { provide: KendalRepository, useClass: KendalRepositoryImpl },
     { provide: KendalDataSource, useClass: KendalMongoDB },
-    { provide: ThreadMessageRepository, useClass: ThreadMessageRepositoryImpl },
-    { provide: HistoryMessageRepository, useClass: HistoryMessageRepositoryImpl },
-    { provide: KendalBotRepository, useClass: KendalBotRepositoryImpl }
+    { provide: KendalBotRepository, useClass: KendalBotRepositoryImpl },
+    { provide: KendalBotDataSource, useClass: KendalBotMongoDB }
   ],
 })
 export class KendalModule {}
