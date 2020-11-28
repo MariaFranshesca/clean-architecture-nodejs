@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common'
 import { MongooseModule } from '@nestjs/mongoose'
-import { KendalModule } from './kendal/kendal.module'
 import { StatusController } from './status/status.controller'
-import { AuthModule } from './auth/auth.module'
 import 'dotenv/config'
+import { AuthModule } from './auth/AuthModule'
+import { KendalModule } from './kendal/KendalModule'
 
 @Module({
   imports: [
@@ -11,7 +11,7 @@ import 'dotenv/config'
       useNewUrlParser: true,
     }),
     AuthModule,
-    KendalModule
+    KendalModule 
   ],
   controllers: [StatusController],
 })

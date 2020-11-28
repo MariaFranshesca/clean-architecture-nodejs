@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
-import { UserController } from './user/user.controller'
-import { AuthController } from './auth.controller'
+import { UserController } from './user/UserController'
+import { AuthController } from './AuthController'
 import { MongooseModule } from '@nestjs/mongoose'
 import { UserSchema } from 'src/core/data/source/database/mongodb/schema/UserSchema'
 import { UserUseCase } from 'src/core/domain/usecases/UserUseCase'
