@@ -11,7 +11,7 @@ import { KendalModule } from './kendal/KendalModule'
       useNewUrlParser: true,
     }),
     AuthModule,
-    KendalModule 
+    KendalModule,
   ],
   controllers: [StatusController],
 })

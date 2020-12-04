@@ -51,7 +51,7 @@ import { KendalBotUseCase } from 'src/core/domain/usecases/KendalBotUseCase'
     { provide: KendalRepository, useClass: KendalRepositoryImpl },
     { provide: KendalDataSource, useClass: KendalMongoDB },
     { provide: KendalBotRepository, useClass: KendalBotRepositoryImpl },
-    { provide: KendalBotDataSource, useClass: KendalBotMongoDB }
+    { provide: KendalBotDataSource, useClass: KendalBotMongoDB },
   ],
 })
 export class KendalModule {}

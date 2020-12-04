@@ -11,7 +11,8 @@ export class KendalMongoDB implements KendalDataSource {
 
   async create(kendal: Kendal): Promise<Kendal> {
     const createKendal = new this.kendalModel(kendal)
-    return await createKendal.save()
+    const kendalDocument: KendalDocument = await createKendal.save()
+    return this.mapDocumentToKendal(kendalDocument)
   }
   async deleteById(id: string): Promise<string> {
     await this.kendalModel.deleteOne({ _id: id })
@@ -23,5 +24,17 @@ export class KendalMongoDB implements KendalDataSource {
   }
   async findAll(): Promise<Kendal[]> {
     return await this.kendalModel.find().exec()
+  }
+
+  private mapDocumentToKendal(item: KendalDocument) {
+    const kendal = new Kendal()
+    kendal.id = item.id
+    kendal.title = item.title
+    kendal.input = item.input
+    kendal.output = item.output
+    kendal.keywords = item.keywords
+    kendal.category = item.category
+    kendal.parentid = item.parentid
+    return kendal
   }
 }
