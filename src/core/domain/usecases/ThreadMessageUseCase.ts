@@ -12,4 +12,7 @@ export class ThreadMessageUseCase {
   async find(filters: ThreadMessage): Promise<ThreadMessage[]> {
     return await this.threadMessageRepository.find(filters)
   }
+  async findAll(): Promise<ThreadMessage[]> {
+    return await this.threadMessageRepository.findAll()
+  }
 }

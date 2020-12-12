@@ -15,17 +15,21 @@ export class ThreadMessageMongoDB implements ThreadMessageDataSource {
     private readonly historyModel: Model<HistoryMessageDocument>
   ) {}
 
-  create(threadMessage: ThreadMessage): Promise<ThreadMessage> {
-    throw new Error('Method not implemented.')
+  async create(threadMessage: ThreadMessage): Promise<ThreadMessage> {
+    const createThreadMessage = new this.threadModel(threadMessage)
+    const threadMessageDocument: ThreadMessageDocument = await createThreadMessage.save()
+    return this.mapDocumentToThreadMessage(threadMessageDocument)
   }
-  deleteById(id: string): Promise<string> {
-    throw new Error('Method not implemented.')
+  async deleteById(id: string): Promise<string> {
+    await this.threadModel.deleteOne({ _id: id })
+    return 'Eliminado correctamente'
   }
-  update(threadMessage: ThreadMessage): Promise<string> {
-    throw new Error('Method not implemented.')
+  async update(threadMessage: ThreadMessage): Promise<string> {
+    await this.threadModel.findByIdAndUpdate(threadMessage.id, threadMessage)
+    return 'Editado correctamente'
   }
-  findAll(): Promise<ThreadMessage[]> {
-    throw new Error('Method not implemented.')
+  async findAll(): Promise<ThreadMessage[]> {
+    return await this.threadModel.find().exec()
   }
 
   async addThreadToHistoryMessage(threadMessage: ThreadMessage): Promise<ThreadMessage> {
@@ -41,5 +45,15 @@ export class ThreadMessageMongoDB implements ThreadMessageDataSource {
       .find(filters)
       .lean()
       .exec()
+  }
+  private mapDocumentToThreadMessage(item: ThreadMessageDocument) {
+    const threadMessage = new ThreadMessage()
+    threadMessage.id = item.id
+    threadMessage.message = item.message
+    threadMessage.username = item.username
+    threadMessage.dateTimeSend = item.dateTimeSend
+    threadMessage.historyMsgId = item.historyMsgId
+    threadMessage.type = threadMessage.type
+    return threadMessage
   }
 }

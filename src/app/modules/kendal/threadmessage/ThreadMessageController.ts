@@ -1,4 +1,4 @@
-import { Controller, Body, Post } from '@nestjs/common'
+import { Controller, Body, Post, Get } from '@nestjs/common'
 import { ThreadMessage } from 'src/core/domain/entities/ThreadMessage'
 import { ThreadMessageUseCase } from 'src/core/domain/usecases/ThreadMessageUseCase'
 
@@ -9,5 +9,9 @@ export class ThreadMessageController {
   @Post()
   async find(@Body() filters: ThreadMessage): Promise<ThreadMessage[]> {
     return await this.threadMsgUseCase.find(filters)
+  }
+  @Get()
+  async findAll(): Promise<ThreadMessage[]> {
+    return await this.threadMsgUseCase.findAll()
   }
 }

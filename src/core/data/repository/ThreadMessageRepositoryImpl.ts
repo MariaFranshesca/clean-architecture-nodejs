@@ -7,6 +7,10 @@ import { ThreadMessageDataSource } from '../source/ThreadMessageDataSource'
 export class ThreadMessageRepositoryImpl implements ThreadMessageRepository {
   constructor(private threadMessageDataSource: ThreadMessageDataSource) {}
 
+  async findAll(): Promise<ThreadMessage[]> {
+    return await this.threadMessageDataSource.findAll()
+  }
+
   async addThreadToHistoryMessage(threadMessage: ThreadMessage): Promise<ThreadMessage> {
     return await this.threadMessageDataSource.addThreadToHistoryMessage(threadMessage)
   }
