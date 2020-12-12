@@ -15,7 +15,8 @@ export class HistoryMessageMongoDB implements HistoryMessageDataSource {
 
   async initHistoryMessage(historymessage: HistoryMessage): Promise<HistoryMessage> {
     const saveHistoryMessage = new this.historyModel(historymessage)
-    return await saveHistoryMessage.save()
+    const historyMessageDocument: HistoryMessageDocument = await saveHistoryMessage.save()
+    return this.mapDocumentToHistoryMessage(historyMessageDocument)
   }
   async findBy(kendalInput: KendalBotInput): Promise<HistoryMessage> {
     return await this.historyModel
@@ -32,5 +33,13 @@ export class HistoryMessageMongoDB implements HistoryMessageDataSource {
       .find(filters)
       .populate('threadMessages')
       .lean()
+  }
+  
+  private mapDocumentToHistoryMessage(item: HistoryMessageDocument) {
+    const historyMessage = new HistoryMessage(item.ip, item.device, item.aditionalInfo, item.user)
+    historyMessage.date = item.date
+    historyMessage.user = item.user 
+    historyMessage.threadMessages = item.threadMessages
+    return historyMessage
   }
 }
