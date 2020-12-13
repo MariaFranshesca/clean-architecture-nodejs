@@ -1,4 +1,4 @@
-import { HistoryMessage } from '../entities/historymessage'
+import { HistoryMessage } from '../entities/HistoryMessage'
 import { KendalBotInput } from '../entities/KendalBotInput'
 
 export abstract class HistoryMessageRepository {
