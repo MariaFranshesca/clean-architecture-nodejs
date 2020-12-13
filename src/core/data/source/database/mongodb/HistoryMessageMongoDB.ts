@@ -1,6 +1,6 @@
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { HistoryMessage } from '../../../../domain/entities/historymessage'
+import { HistoryMessage } from '../../../../domain/entities/HistoryMessage'
 import { HistoryMessageDataSource } from '../../HistoryMessageDataSource'
 import { HistoryMessageDocument } from './documents/HistoryMessageDocument'
 import { KendalBotInput } from '../../../../domain/entities/KendalBotInput'
