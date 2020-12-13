@@ -1,7 +1,6 @@
 import { Controller, Post, HttpStatus, UsePipes, HttpException, Body, Get } from '@nestjs/common'
-import { User } from 'src/core/domain/entities/User'
-import { UserUseCase } from 'src/core/domain/usecases/UserUseCase'
-
+import { User } from '../../../../core/domain/entities/User'
+import { UserUseCase } from '../../../../core/domain/usecases/UserUseCase'
 import { ValidationPipe } from '../../../pipes/validation.pipe'
 
 @Controller('user')

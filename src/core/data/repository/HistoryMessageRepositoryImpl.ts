@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
-import { HistoryMessage } from 'src/core/domain/entities/HistoryMessage'
-import { KendalBotInput } from 'src/core/domain/entities/KendalBotInput'
-import { HistoryMessageRepository } from 'src/core/domain/repository/HistoryMessageRepository'
+import { HistoryMessage } from '../../domain/entities/HistoryMessage'
+import { KendalBotInput } from '../../domain/entities/KendalBotInput'
+import { HistoryMessageRepository } from '../../domain/repository/HistoryMessageRepository'
 import { HistoryMessageDataSource } from '../source/HistoryMessageDataSource'
 
 @Injectable()

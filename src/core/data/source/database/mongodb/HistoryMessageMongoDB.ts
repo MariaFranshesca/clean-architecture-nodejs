@@ -1,9 +1,9 @@
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { HistoryMessage } from 'src/core/domain/entities/historymessage'
+import { HistoryMessage } from '../../../../domain/entities/historymessage'
 import { HistoryMessageDataSource } from '../../HistoryMessageDataSource'
 import { HistoryMessageDocument } from './documents/HistoryMessageDocument'
-import { KendalBotInput } from 'src/core/domain/entities/KendalBotInput'
+import { KendalBotInput } from '../../../../domain/entities/KendalBotInput'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()

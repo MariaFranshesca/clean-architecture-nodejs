@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common'
-import { HistoryMessage } from 'src/core/domain/entities/HistoryMessage'
-import { HistoryMessageUseCase } from 'src/core/domain/usecases/historymessageUsecase'
+import { HistoryMessage } from '../../../../core/domain/entities/HistoryMessage'
+import { HistoryMessageUseCase } from '../../../../core/domain/usecases/historymessageUsecase'
 
 @Controller('historymessage')
 export class HistoryMessageController {

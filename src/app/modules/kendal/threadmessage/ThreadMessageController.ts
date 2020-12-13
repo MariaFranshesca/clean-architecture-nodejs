@@ -1,6 +1,6 @@
 import { Controller, Body, Post, Get } from '@nestjs/common'
-import { ThreadMessage } from 'src/core/domain/entities/ThreadMessage'
-import { ThreadMessageUseCase } from 'src/core/domain/usecases/ThreadMessageUseCase'
+import { ThreadMessage } from '../../../../core/domain/entities/ThreadMessage'
+import { ThreadMessageUseCase } from '../../../../core/domain/usecases/ThreadMessageUseCase'
 
 @Controller('threadmessage')
 export class ThreadMessageController {

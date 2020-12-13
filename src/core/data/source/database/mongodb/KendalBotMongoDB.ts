@@ -1,9 +1,9 @@
 import { Model } from 'mongoose'
-import { KendalBot } from 'src/core/domain/entities/KendalBot'
+import { KendalBot } from '../../../../domain/entities/KendalBot'
 import { KendalBotDataSource } from '../../KendalBotDataSource'
 import { InjectModel } from '@nestjs/mongoose'
 import { KendalDocument } from './documents/KendalDocument'
-import { KendalBotOption } from 'src/core/domain/entities/KendalBotOption'
+import { KendalBotOption } from '../../../../domain/entities/KendalBotOption'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()

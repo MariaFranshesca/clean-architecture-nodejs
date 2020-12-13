@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
-import { ThreadMessage } from 'src/core/domain/entities/ThreadMessage'
-import { ThreadMessageRepository } from 'src/core/domain/repository/ThreadMessageRepository'
+import { ThreadMessage } from '../../domain/entities/ThreadMessage'
+import { ThreadMessageRepository } from '../../domain/repository/ThreadMessageRepository'
 import { ThreadMessageDataSource } from '../source/ThreadMessageDataSource'
 
 @Injectable()

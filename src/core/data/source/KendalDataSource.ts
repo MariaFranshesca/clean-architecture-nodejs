@@ -1,4 +1,4 @@
-import { Kendal } from 'src/core/domain/entities/Kendal'
+import { Kendal } from '../../domain/entities/Kendal'
 export abstract class KendalDataSource {
   abstract create(kendal: Kendal): Promise<Kendal>
   abstract deleteById(id: string): Promise<string>
