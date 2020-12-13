@@ -22,7 +22,7 @@ import { HistoryMessageRepositoryImpl } from '../../../core/data/repository/Hist
 import { KendalBotRepositoryImpl } from '../../../core/data/repository/KendalBotRepositoryImpl'
 import { KendalBotDataSource } from '../../../core/data/source/KendalBotDataSource'
 import { KendalBotMongoDB } from '../../../core/data/source/database/mongodb/KendalBotMongoDB'
-import { HistoryMessageUseCase } from '../../../core/domain/usecases/historymessageUsecase'
+import { HistoryMessageUseCase } from '../../../core/domain/usecases/HistoryMessageUsecase'
 import { ThreadMessageUseCase } from '../../../core/domain/usecases/ThreadMessageUseCase'
 import { ThreadMessageRepositoryImpl } from '../../../core/data/repository/ThreadMessageRepositoryImpl'
 import { ThreadMessageRepository } from '../../../core/domain/repository/ThreadMessageRepository'
