@@ -1,7 +1,7 @@
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { ThreadMessageDataSource } from '../../ThreadMessageDataSource'
-import { ThreadMessage } from 'src/core/domain/entities/ThreadMessage'
+import { ThreadMessage } from '../../../../domain/entities/ThreadMessage'
 import { HistoryMessageDocument } from './documents/HistoryMessageDocument'
 import { ThreadMessageDocument } from './documents/ThreadMessageDocument'
 import { Injectable } from '@nestjs/common'

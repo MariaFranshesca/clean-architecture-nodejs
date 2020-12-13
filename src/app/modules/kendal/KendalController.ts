@@ -11,8 +11,8 @@ import {
   Param,
   Put,
 } from '@nestjs/common'
-import { Kendal } from 'src/core/domain/entities/Kendal'
-import { KendalUseCase } from 'src/core/domain/usecases/KendalUseCase'
+import { Kendal } from '../../../core/domain/entities/Kendal'
+import { KendalUseCase } from '../../../core/domain/usecases/KendalUseCase'
 
 @Controller('kendal')
 export class KendalController {

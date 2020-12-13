@@ -1,7 +1,7 @@
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { UserDocument } from 'src/core/data/source/database/mongodb/documents/UserDocument'
-import { User } from 'src/core/domain/entities/User'
+import { UserDocument } from '../../../../data/source/database/mongodb/documents/UserDocument'
+import { User } from '../../../../domain/entities/User'
 import { UserDataSource } from '../../UserDataSource'
 import { Injectable } from '@nestjs/common'
 

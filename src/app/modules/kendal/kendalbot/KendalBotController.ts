@@ -1,6 +1,6 @@
 import { Controller, Post, HttpStatus, UsePipes, ValidationPipe, Body, HttpException, Headers } from '@nestjs/common'
-import { KendalBotInput } from 'src/core/domain/entities/KendalBotInput'
-import { KendalBotUseCase } from 'src/core/domain/usecases/KendalBotUseCase'
+import { KendalBotInput } from '../../../../core/domain/entities/KendalBotInput'
+import { KendalBotUseCase } from '../../../../core/domain/usecases/KendalBotUseCase'
 import { KendalBotInputRequest } from './KendalBotInputRequest'
 
 @Controller('kendalbot')

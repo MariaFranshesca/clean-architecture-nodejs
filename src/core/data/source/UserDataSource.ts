@@ -1,4 +1,4 @@
-import { User } from 'src/core/domain/entities/User'
+import { User } from '../../domain/entities/User'
 export abstract class UserDataSource {
   abstract create(user: User): Promise<User>
   abstract deleteById(id: string): Promise<string>

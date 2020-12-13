@@ -1,4 +1,4 @@
-import { ThreadMessage } from 'src/core/domain/entities/ThreadMessage'
+import { ThreadMessage } from '../../domain/entities/ThreadMessage'
 export abstract class ThreadMessageDataSource {
   abstract create(threadMessage: ThreadMessage): Promise<ThreadMessage>
   abstract deleteById(id: string): Promise<string>
